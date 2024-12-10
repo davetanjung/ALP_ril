@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="w-full h-screen p-12 flex flex-col justify-center font-['Poppins']">
+    <div class="w-full min-h-screen p-12 flex flex-col justify-center font-['Poppins'] bg-[#F3F4F8]">
         <x-navigation></x-navigation>
     {{ $slot }}
     </div>

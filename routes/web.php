@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/student', function () {
-    return view('student');
-})->name('student');
+
+Route::get('/student', [StudentController::class, 'getAllStudents'])->name('student');
+Route::get('/student', [StudentController::class, 'searchStudents']);
 
 Route::get('/lecturer', function () {
     return view('lecturer');
