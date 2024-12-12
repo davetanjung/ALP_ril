@@ -1,6 +1,6 @@
 <x-layout>
         <div class="h-screen w-full items-center justify-center">
-            <div class="grid grid-cols-2 gap-6 py-12">
+            <div class="flex flex-col gap-y-6 lg:grid lg:grid-cols-2 lg:gap-6 lg:py-12">
                 <!-- Lecturer Box -->
                 <div class="relative group">
                     <img

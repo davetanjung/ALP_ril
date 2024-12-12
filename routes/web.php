@@ -8,8 +8,8 @@ Route::get('/', function () {
 })->name('home');
 
 
+Route::get('/student/search', [StudentController::class, 'index'])->name('searchStudent'); // Handles search
 Route::get('/student', [StudentController::class, 'getAllStudents'])->name('student');
-Route::get('/student', [StudentController::class, 'searchStudents']);
 
 Route::get('/lecturer', function () {
     return view('lecturer');

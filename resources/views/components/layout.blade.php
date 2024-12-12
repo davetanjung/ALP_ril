@@ -15,14 +15,16 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+   
 </head>
 
 <body>
+    
     <div class="w-full min-h-screen p-12 flex flex-col justify-center font-['Poppins'] bg-[#F3F4F8]">
         <x-navigation></x-navigation>
     {{ $slot }}
     </div>
     <x-footer></x-footer>
 </body>
-
+<script src="{{ asset('js/navigation.js') }}"></script>
 </html>
