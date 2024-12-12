@@ -7,26 +7,28 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function student()
-    {
-        return view('student', []);
-    }
-
-
-    public function index(Request $request)
-{
-    $searchTerm = $request->input('search');
-
-    $students = Student::when($searchTerm, function ($query, $searchTerm) {
-        $query->where('name', 'like', '%' . $searchTerm . '%');
-    })->get();
-
-    return view('student', ['students' => $students]);
-}
 
     public function getAllStudents()
     {
+        // Retrieve all students when first loading the page
         $students = Student::all();
-        return view('student', ['students' => $students]);
+        return view('student', [
+            'students' => $students,
+            'search' => ''
+        ]);
+    }
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search', '');
+
+        $students = Student::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->get();
+
+        return view('student', [
+            'students' => $students,
+            'search' => $search
+        ]);
     }
 }

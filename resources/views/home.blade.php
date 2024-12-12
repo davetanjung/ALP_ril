@@ -2,9 +2,9 @@
         <div class="h-screen w-full items-center justify-center">
             <div class="flex flex-col gap-y-6 lg:grid lg:grid-cols-2 lg:gap-6 lg:py-12">
                 <!-- Lecturer Box -->
-                <div class="relative group">
+                <a href="{{ url('/lecturer') }}" class="relative group cursor-pointer">
                     <img
-                        src="{{ URL::asset('/images/lecturers.png') }}"
+                        src="{{ asset('/images/lecturers.png') }}"
                         alt="Lecturer"
                         class="w-full h-64 object-cover rounded-lg"
                     />
@@ -12,12 +12,12 @@
                     <div class="absolute inset-0 flex items-center justify-center">
                         <h2 class="text-white text-2xl font-bold">Lecturer</h2>
                     </div>
-                </div>
+                </a>
     
                 <!-- Student Box -->
-                <div class="relative group">
+                <a href='{{ url('/student') }}' class="relative group cursor-pointer">
                     <img
-                        src="{{ URL::asset('/images/students.png') }}"
+                        src="{{ asset('/images/students.png') }}"
                         alt="Student"
                         class="w-full h-64 object-cover rounded-lg"
                     />
@@ -25,12 +25,12 @@
                     <div class="absolute inset-0 flex items-center justify-center">
                         <h2 class="text-white text-2xl font-bold">Student</h2>
                     </div>
-                </div>
+                </a>
     
                 <!-- Subject Box -->
-                <div class="relative group">
+                <a href='{{ url('/subject') }}'  class="relative group cursor-pointer">
                     <img
-                       src="{{ URL::asset('/images/subjects.png') }}"
+                       src="{{ asset('/images/subjects.png') }}"
                         alt="Subject"
                         class="w-full h-64 object-cover rounded-lg"
                     />
@@ -38,12 +38,12 @@
                     <div class="absolute inset-0 flex items-center justify-center">
                         <h2 class="text-white text-2xl font-bold">Subject</h2>
                     </div>
-                </div>
+                </a>
     
                 <!-- Project Box -->
-                <div class="relative group">
+                <a href="{{ url('/project') }}" class="relative group cursor-pointer">
                     <img
-                       src="{{ URL::asset('/images/projects.png') }}"
+                       src="{{ asset('/images/projects.png') }}"
                         alt="Project"
                         class="w-full h-64 object-cover rounded-lg"
                     />
@@ -51,7 +51,7 @@
                     <div class="absolute inset-0 flex items-center justify-center">
                         <h2 class="text-white text-2xl font-bold">Project</h2>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 </x-layout>

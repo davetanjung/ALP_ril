@@ -2,18 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Student;
+use App\Models\Project;
+use App\Models\Students_Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use PHPUnit\Framework\MockObject\Builder\Stub;
 
-class StudentSeeder extends Seeder
+class Student_ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Student::factory()->count(100)->create();
+        Students_Project::factory(100)
+        ->recycle(Project::factory(10)->create())        
+        ->create();
     }
 }
