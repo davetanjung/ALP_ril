@@ -14,10 +14,10 @@
         <a href="{{ url('/') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Home
         </a>
-        <a href="{{ url('/lecturer') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'lecturer' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
+        <a href="{{ url('/lecturer') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{  (Route::currentRouteName() == 'lecturer' || Route::currentRouteName() == 'searchLecturer') ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Lecturer
         </a>
-        <a href="{{ url('/student') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none   {{ (Route::currentRouteName() == 'student' || Route::currentRouteName() == 'searchStudent') ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
+        <a href="{{ url('/student') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none   {{ (Route::currentRouteName() == 'student' || Route::currentRouteName() == 'searchStudent' || Route::currentRouteName() == 'studentDetail') ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Student
         </a>
         <a href="{{ url('/subject') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'subject' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">

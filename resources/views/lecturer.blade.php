@@ -3,12 +3,12 @@
         <!-- Search Bar -->
         <div class="flex justify-between w-full items-center mt-8">
             <span class="font-bold text-2xl">List of Lecturers</span>
-            <form method="GET" action="{{ route('lecturer') }}" class="flex items-center border-2 rounded-xl p-1 bg-white">
+            <form method="GET" action="{{ route('searchLecturer') }}" class="flex items-center border-2 rounded-xl p-1 bg-white">
                 <input 
                     type="text" 
                     placeholder="Search..." 
                     class="border-none outline-none text-gray-400" 
-                    {{-- value="{{ request('index') }}"  --}}
+                    value="{{ $search ?? '' }}"
                     name="search" />
                 <button type="submit">
                     <img 
@@ -29,7 +29,7 @@
                     <span class="text-md text-gray-400 mx-8">{{ $lecturer->email }}</span>
                 </div>
             @empty
-                <p class="text-center text-gray-500">No students found.</p>
+                <p class="text-center text-gray-500">No Lecturers found.</p>
             @endforelse
         </div>
     </div>

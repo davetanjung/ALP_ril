@@ -31,4 +31,13 @@ class StudentController extends Controller
             'search' => $search
         ]);
     }
+
+    public function getStudentById($id)
+    {
+        $student = Student::find($id);
+
+        return view('studentDetail', [
+            'student' => $student
+        ]);
+    }
 }

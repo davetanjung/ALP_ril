@@ -15,17 +15,15 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
-    @livewireStyles
 </head>
 
 <body>
     
     <div class="w-full min-h-screen p-12 flex flex-col justify-center font-['Poppins'] bg-[#F3F4F8]">
     <x-navigation></x-navigation>
-    {{ $slot }}
+        {{ $slot }}
     </div>
     <x-footer></x-footer>
-    @livewireScripts
 </body>
 <script src="{{ asset('js/navigation.js') }}"></script>
 </html>
