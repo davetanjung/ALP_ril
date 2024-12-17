@@ -7,7 +7,7 @@
             <div class="grid grid-cols-2 gap-6">
                 @foreach ($projects as $project)
                     <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-lg p-4">
+                <a href="{{ route('projectDetail', $project['project_id']) }}" class="bg-white rounded-lg shadow-lg p-4">
                     <img src="{{ asset('/images/subjects.png') }}" alt="SS Project"
                         class="w-full h-80 object-cover rounded-lg mb-2">
                         {{-- <h2 class="font-bold text-lg mb-2">{{ $project->students_projects->first()->status ?? 'No status available' }}</h2> --}}
@@ -18,6 +18,6 @@
                         <img src="https://via.placeholder.com/40" class="rounded-full border" alt="Avatar">
                         <img src="https://via.placeholder.com/40" class="rounded-full border" alt="Avatar">
                     </div>
-                </div>
+                </a>
                 @endforeach                
 </x-layout>
