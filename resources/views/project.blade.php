@@ -10,7 +10,8 @@
                 <div class="bg-white rounded-lg shadow-lg p-4">
                     <img src="{{ asset('/images/subjects.png') }}" alt="SS Project"
                         class="w-full h-80 object-cover rounded-lg mb-2">
-                    <h2 class="font-bold text-lg mb-2">{{ $project->title }}</h2>
+                        {{-- <h2 class="font-bold text-lg mb-2">{{ $project->students_projects->first()->status ?? 'No status available' }}</h2> --}}
+                        <h2 class="font-bold text-lg mb-2">{{ $project->title }}</h2>
                     <div class="flex space-x-2">
                         {{-- gambar profile orang orang --}}
                         <img src="https://via.placeholder.com/40" class="rounded-full border" alt="Avatar">

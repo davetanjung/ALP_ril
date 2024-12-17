@@ -11,7 +11,6 @@ class StudentController extends Controller
 
     public function getAllStudents()
     {
-        // Retrieve all students when first loading the page
         $students = Student::all();
         return view('student', [
             'students' => $students,

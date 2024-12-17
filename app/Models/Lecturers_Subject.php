@@ -12,6 +12,7 @@ class Lecturers_Subject extends Model
     use HasFactory;
 
     protected $table = 'lecturers_subjects';
+    protected $primaryKey = 'lecturer_subject_id';
 
     protected $fillable = [
         'year',

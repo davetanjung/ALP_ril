@@ -27,27 +27,18 @@ class SubjectController extends Controller
     }
 
     public function getSubjectProjects($subjectId)
-{
-    // Eager load lecturer_subject and projects
-    $subject = Subject::with('lecturer_subject.project')->findOrFail($subjectId);
+    {
+        $projects = Project::whereHas('lecturer_subject', function ($query) use ($subjectId) {
+            $query->where('subject_id', $subjectId);
+        })->get();
 
-    // Check if lecturer_subject is populated
-    if (!$subject->lecturer_subject->isEmpty()) {
-        dd($subject->lecturer_subject); // Check this to confirm what’s being loaded
-    }
-
-    // Proceed to process projects
-    $projects = $subject->lecturer_subject->flatMap(function ($lecturerSubject) {
-        return $lecturerSubject->projects;
-    });
-
-    // Return the data to the view
-    return view('subjectDetail', [
-        'subject' => $subject,
-        'projects' => $projects
-    ]);
-}
-
+        $subject = Subject::findOrFail($subjectId);
+    
+        return view('subjectDetail', [
+            'subject' => $subject,
+            'projects' => $projects,
+        ]);
+    }    
     
 
 }

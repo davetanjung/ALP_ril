@@ -28,6 +28,7 @@ Route::get('/lecturer/search', [LecturerController::class, 'index'])->name('sear
 
 
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
+Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');
 
 Route::get('/subject', [SubjectController::class, 'getAllSubjects'])->name('subject');
 Route::get('/subject/{id}', [SubjectController::class, 'getSubjectProjects'])->name('subjectDetail');
