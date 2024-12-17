@@ -17,8 +17,8 @@ class Student extends Model
         'nim'
     ];
 
-    public function group_project(): HasMany {
-        return $this->hasMany(Groups_Project::class, 'group_project_id');
+    public function group_projects(): HasMany {
+        return $this->hasMany(Groups_Project::class, 'student_id'); 
     }
 
 }

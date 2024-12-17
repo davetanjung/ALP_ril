@@ -14,7 +14,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
-        Project::factory(100)
+        Project::factory(10)
         ->recycle(Lecturers_Subject::factory(10)->create())
         ->create();
     }

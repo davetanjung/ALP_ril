@@ -10,6 +10,8 @@ class Students_Project extends Model
 {
     use HasFactory;
     protected $table = 'students_projects';
+    protected $primaryKey = 'student_project_id';
+
 
     protected $fillable = [
         'image',
@@ -18,6 +20,6 @@ class Students_Project extends Model
     ];
 
     public function project(): BelongsTo {
-        return $this ->belongsTo(Project::class);
+        return $this ->belongsTo(Project::class, 'project_id');
     }
 }

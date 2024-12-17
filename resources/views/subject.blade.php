@@ -7,7 +7,7 @@
             <div class="grid grid-cols-2 gap-6">
                 @foreach ($subjects as $subject)
                 <!-- Card -->
-                <a href="{{ url('/lecturer') }}" class="relative group cursor-pointer">
+                <a href="{{ route('subjectDetail', $subject['id']) }}" class="relative group cursor-pointer">
                     <img
                         src="{{ asset('/images/subjects.png') }}"
                         alt="Lecturer"

@@ -11,7 +11,7 @@
 
     </button>
     <nav id="menu" class="hidden md:flex md:w-full md:justify-center">
-        <a href="{{ url('/') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
+        <a href="{{ route('home') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Home
         </a>
         <a href="{{ url('/lecturer') }}" class="px-8 text-black transition hover:text-black/70 focus:outline-none {{  (Route::currentRouteName() == 'lecturer' || Route::currentRouteName() == 'searchLecturer') ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">

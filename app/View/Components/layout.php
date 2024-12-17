@@ -11,9 +11,13 @@ class layout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $showNavigation;
+    public $showFooter;
+
+    public function __construct($showNavigation = true, $showFooter = true)
     {
-        //
+        $this->showNavigation = $showNavigation;
+        $this->showFooter = $showFooter;
     }
 
     /**

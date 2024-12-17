@@ -13,9 +13,12 @@ class Subject extends Model
     protected $fillable = [
         'name',
         'subject_image',
+        'lecturer_subject_id'
      ];
 
-    public function lecturer_subject(): HasMany {
-        return $this->hasMany(Lecturers_Subject::class, 'lecturer_subject_id');
-    }
+     public function lecturer_subject()
+     {
+         return $this->hasMany(Lecturers_Subject::class, 'subject_id');
+     }     
+    
 }

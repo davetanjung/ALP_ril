@@ -11,6 +11,7 @@ class Groups_Project extends Model
     use HasFactory;
 
     protected $table = 'groups_projects';
+    protected $primaryKey = 'groups_projects_id';
 
     protected $fillable = [
         'student_id',
@@ -18,11 +19,11 @@ class Groups_Project extends Model
     ];
 
     public function student(): BelongsTo {
-        return $this ->belongsTo(Student::class);
+        return $this ->belongsTo(Student::class, 'student_id');
     }
 
     public function student_project(): BelongsTo {
-        return $this ->belongsTo(Students_Project::class);
+        return $this ->belongsTo(Students_Project::class, 'student_project_id');
     }
 
 }

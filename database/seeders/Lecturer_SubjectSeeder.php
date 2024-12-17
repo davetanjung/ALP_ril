@@ -15,9 +15,11 @@ class Lecturer_SubjectSeeder extends Seeder
      */
     public function run(): void
     {
-        Lecturers_Subject::factory(100)
-        ->recycle(Subject::factory(10)->create())
-        ->recycle(Lecturer::factory(20)->create())
-        ->create();
+        $subjects = Subject::factory(6)->create();
+
+        Lecturers_Subject::factory()->count(100)
+            ->recycle($subjects)
+            ->recycle(Lecturer::factory())
+            ->create();
     }
 }

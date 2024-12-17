@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Project extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'project_id';
     
     protected $fillable = [
         'title',
@@ -18,7 +19,7 @@ class Project extends Model
     ];
 
     public function lecturer_subject(): BelongsTo {
-        return $this ->belongsTo(Lecturers_Subject::class);
+        return $this ->belongsTo(Lecturers_Subject::class, 'lecturer_subject_id');
     }
 
 }

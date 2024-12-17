@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            
+            $table->unsignedBigInteger('lecturer_id')->nullable();
+            $table->foreign('lecturer_id')->references('id')->on('lecturers')->onUpdate('cascade')->onDelete('cascade'); 
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->foreign('student_id')->references('student_id')->on('students')->onUpdate('cascade')->onDelete('cascade'); 
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

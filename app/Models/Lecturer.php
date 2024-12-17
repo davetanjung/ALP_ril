@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Lecturer extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'lecturer_id';
 
     protected $fillable = [
         'name',
@@ -18,5 +19,9 @@ class Lecturer extends Model
 
      public function lecturer_subject(): HasMany {
         return $this->hasMany(Lecturers_Subject::class, 'lecturer_subject_id');
+    }
+
+    public function user(): HasMany {
+        return $this->hasMany(User::class);
     }
 }

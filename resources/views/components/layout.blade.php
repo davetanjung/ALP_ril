@@ -18,12 +18,18 @@
 </head>
 
 <body>
-    
+
     <div class="w-full min-h-screen p-12 flex flex-col justify-center font-['Poppins'] bg-[#F3F4F8]">
-    <x-navigation></x-navigation>
+        @if ($showNavigation ?? true)
+            <x-navigation></x-navigation>
+        @endif
+
         {{ $slot }}
     </div>
-    <x-footer></x-footer>
+    @if ($showFooter ?? true)
+        <x-footer></x-footer>
+    @endif
 </body>
 <script src="{{ asset('js/navigation.js') }}"></script>
+
 </html>
