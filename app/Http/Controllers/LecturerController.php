@@ -13,11 +13,14 @@ class LecturerController extends Controller
     public function getAllLecturers()
     {
         // $userId = Auth::id(); 
-        // Retrieve all students when first loading the page
-        $lecturers = Lecturer::all();
+        $search = '';
+        $lecturers = Lecturer::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->paginate(10);
+
         return view('lecturer', [
             'lecturers' => $lecturers,
-            'search' => '',
+            'search' => $search,
             // 'userId' => $userId
         ]);
     }
@@ -29,7 +32,7 @@ class LecturerController extends Controller
 
         $lecturers = Lecturer::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->get();
+        })->paginate(10);
 
         return view('lecturer', [
             'lecturers' => $lecturers,

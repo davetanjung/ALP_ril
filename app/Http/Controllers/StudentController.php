@@ -20,7 +20,7 @@ class StudentController extends Controller
         $students = Student::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
         })->paginate(10);
-        
+
         return view('student', [
             'students' => $students,
             'search' => '',
@@ -55,30 +55,28 @@ class StudentController extends Controller
 
     // public function getStudentProjects($userId, $studentId)
     public function getStudentProjects($studentId)
-{
-    // $userId = Auth::id(); 
-    $student = Student::findOrFail($studentId);  
+    {
+        // $userId = Auth::id(); 
+        $student = Student::findOrFail($studentId);
 
-    $groupProjects = Groups_Project::where('student_id', $studentId)
-                                    ->with('student_project')  
-                                    ->get();
-    
-    $projects = $groupProjects->map(function ($groupProject) {
-        return $groupProject->student_project->project;
-    });
+        $groupProjects = Groups_Project::where('student_id', $studentId)
+            ->with('student_project')
+            ->get();
 
-    $studentProjects = $groupProjects->map(function ($groupProject) {
-        return $groupProject->student_project;
-    });
+        $studentProjects = $groupProjects->map(function ($groupProject) {
+            return $groupProject->student_project;
+        });
+
+        $projects = $groupProjects->map(function ($groupProject) {
+            return $groupProject->student_project->project;
+        });
 
 
-
-    return view('studentDetail', [
-        'student' => $student,
-        'projects' => $projects,
-        'studentProjects' => $studentProjects
-        // 'userId' => $userId
-    ]);
-}
-
+        return view('studentDetail', [
+            'student' => $student,
+            'projects' => $projects,
+            'studentProjects' => $studentProjects
+            // 'userId' => $userId
+        ]);
+    }
 }

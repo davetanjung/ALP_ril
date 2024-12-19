@@ -38,8 +38,6 @@ Route::get('/lecturer', [LecturerController::class, 'getAllLecturers'])->name('l
 Route::get('/lecturer/{id}', [LecturerController::class, 'getLecturerSubjects'])->name('lecturerDetail');
 Route::get('/lecturer/search', [LecturerController::class, 'index'])->name('searchLecturer');
 
-
-
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
 Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');
 

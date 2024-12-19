@@ -32,6 +32,7 @@ class SubjectController extends Controller
             $query->where('subject_id', $subjectId);
         })->get();
 
+
         $subject = Subject::findOrFail($subjectId);
     
         return view('subjectDetail', [

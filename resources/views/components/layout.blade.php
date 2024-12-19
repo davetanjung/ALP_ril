@@ -31,5 +31,4 @@
     @endif
 </body>
 <script src="{{ asset('js/navigation.js') }}"></script>
-
 </html>

@@ -12,7 +12,7 @@
         <div class="w-96 h-1/2 flex flex-col">
             <span class="font-bold text-2xl mb-8">My Projects</span>
             @foreach ($projects as $project)
-            <a href="{{ url('/lecturer') }}" class="relative group cursor-pointer">
+            <a href="{{ route('projectDetail', $project['project_id']) }}" class="relative group cursor-pointer">
                 @foreach ($studentProjects as $studentProject)
                 <img                
                     src="{{ asset($studentProject->image) }}"
@@ -21,9 +21,8 @@
                 />
                 @endforeach
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-transparent opacity-70 group-hover:opacity-90 rounded-lg"></div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    
-                    <h2 class="text-white text-2xl font-bold">{{ $project->assignment_type }}</h2>
+                <div class="absolute inset-0 flex items-center justify-center">                    
+                    <h2 class="text-white text-2xl font-bold">{{ $project->title }}</h2>
                 </div>
             </a>  
             @endforeach        

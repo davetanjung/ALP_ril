@@ -15,9 +15,7 @@ class ProjectController extends Controller
             ->whereHas('students_projects', function ($query) {               
                 $query->whereIn('status', ['good', 'normal']);
             })
-            ->paginate(10);
-
-            
+            ->paginate(10);            
 
             return view('project', [
                 'projects' => $projects,
@@ -27,10 +25,13 @@ class ProjectController extends Controller
     public function getProjectDetail($projectId){
         $projects = Project::findorfail($projectId);       
         
+        // get student_project berdasarkan project_id
         $students_project = Students_Project::where('project_id', $projectId)->first();
 
+        // get semua group project berdasarkan student_project_id
         $group_projects = Groups_Project::where('student_project_id', $students_project->student_project_id)->get();
 
+        // di mapping jadi collection untuk mendapatkan data student
         $students = $group_projects->map(function ($groupProject) {
             return $groupProject->student;  
         });

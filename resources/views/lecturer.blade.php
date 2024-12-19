@@ -19,7 +19,7 @@
             </form>
         </div>
 
-        <!-- Student Cards -->
+        <!-- Card -->
         <div class="flex flex-col gap-y-2 mt-8">
             @forelse ($lecturers as $lecturer)
             <a href="{{ route('lecturerDetail', ['id' => $lecturer->id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white">
@@ -31,7 +31,10 @@
             </a>
             @empty
                 <p class="text-center text-gray-500">No Lecturers found.</p>
-            @endforelse
+            @endforelse            
+        </div>
+        <div class="mt-4 ">
+            {{ $lecturers->links() }}
         </div>
     </div>
 </x-layout>

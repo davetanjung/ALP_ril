@@ -12,7 +12,7 @@
         <div class="w-96 h-1/2 flex flex-col">
             <span class="font-bold text-2xl mb-8">Subjects</span>
             @foreach ($subjects as $subject)
-            <a href="{{ url('/lecturer') }}" class="relative group cursor-pointer">               
+            <a href="{{ route('subjectDetail', $subject['id']) }}" class="relative group cursor-pointer">               
                 <img                
                     src="{{ asset($subject->subject_image) }}"
                     alt="Projects"
