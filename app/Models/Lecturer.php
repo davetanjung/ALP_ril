@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Lecturer extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'lecturer_id';
 
     protected $fillable = [
         'name',

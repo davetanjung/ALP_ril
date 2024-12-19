@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Groups_Project;
 use App\Models\Project;
 use App\Models\Students_Project;
 use Illuminate\Http\Request;
@@ -14,18 +15,30 @@ class ProjectController extends Controller
             ->whereHas('students_projects', function ($query) {               
                 $query->whereIn('status', ['good', 'normal']);
             })
-            ->get();
+            ->paginate(10);
+
+            
 
             return view('project', [
-                'projects' => $projects
+                'projects' => $projects,
             ]);
     }
 
     public function getProjectDetail($projectId){
-        $projects = Project::findorfail($projectId);
+        $projects = Project::findorfail($projectId);       
+        
+        $students_project = Students_Project::where('project_id', $projectId)->first();
+
+        $group_projects = Groups_Project::where('student_project_id', $students_project->student_project_id)->get();
+
+        $students = $group_projects->map(function ($groupProject) {
+            return $groupProject->student;  
+        });
 
         return view('projectDetail', [
-            'projects' => $projects
+            'projects' => $projects,
+            'students_project' => $students_project,
+            'students' => $students
         ]);
     }
 }

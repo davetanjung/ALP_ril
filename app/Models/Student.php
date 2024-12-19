@@ -14,7 +14,8 @@ class Student extends Model
     protected $fillable = [
         'name',
         'email',
-        'nim'
+        'nim',
+        'image'
     ];
 
     public function group_projects(): HasMany {

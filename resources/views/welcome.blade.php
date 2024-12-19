@@ -13,18 +13,25 @@
                 <div class="space-y-4">
                     <form action="{{ route('login') }}" method="GET">
                         @csrf
-                        <button type="submit"  class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
                             Login
                         </button>
-                    </form>
-                    
+                    </form>                    
+                
                     <!-- Register form -->
                     <form action="{{ route('register') }}" method="GET">
                         <button type="submit" class="w-full bg-blue-400 text-white py-2 px-4 rounded-lg hover:bg-blue-500 transition">
                             Register
                         </button>
-                    </form>                         
+                    </form>    
+                
+                    <form action="{{ route('home') }}" method="GET">
+                        <button type="submit" class="w-full bg-white text-black py-2 px-4 border-2 rounded-lg hover:bg-gray-200 transition">
+                            Continue as Guest
+                        </button>
+                    </form>                                          
                 </div>
+                
             </div>
         </div>
     </div> 

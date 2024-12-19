@@ -18,7 +18,7 @@ class Students_ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-        'image'=> ('aaaa.png'),
+        'image'=> $this->faker->imageUrl(),
         'status' => $this->faker->randomElement(['Good', 'Normal', 'Bad']),
         'project_id' => Project::factory(),
         ];

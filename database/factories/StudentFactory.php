@@ -23,6 +23,7 @@ class StudentFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->email,
             'nim' => $this->faker->phoneNumber,
+            'image' => $this->faker->imageUrl()
         ];
     }
 }

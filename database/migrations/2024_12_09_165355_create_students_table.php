@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('student_id');
             $table->string('name');
             $table->string('email');
-            $table->string('nim');        
+            $table->string('nim');
+            $table->string('image');
             $table->timestamps();
         });
     }

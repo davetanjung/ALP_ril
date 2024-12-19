@@ -2,7 +2,8 @@
         <div class="h-screen w-full items-center justify-center">
             <div class="flex flex-col gap-y-6 lg:grid lg:grid-cols-2 lg:gap-6 lg:py-12">
                 <!-- Lecturer Box -->
-                <a href="{{ url('/lecturer') }}" class="relative group cursor-pointer">
+                <a href="{{ route('lecturer') }}" class="relative group cursor-pointer">
+                    {{-- <a href="{{ route('lecturer', ['userId' => Auth::id()]) }}" class="relative group cursor-pointer"> --}}
                     <img
                         src="{{ asset('/images/lecturers.png') }}"
                         alt="Lecturer"
@@ -15,7 +16,7 @@
                 </a>
     
                 <!-- Student Box -->
-                <a href='{{ url('/student') }}' class="relative group cursor-pointer">
+                <a href='{{ route('student') }}' class="relative group cursor-pointer">
                     <img
                         src="{{ asset('/images/students.png') }}"
                         alt="Student"
@@ -28,7 +29,7 @@
                 </a>
     
                 <!-- Subject Box -->
-                <a href='{{ url('/subject') }}'  class="relative group cursor-pointer">
+                <a href='{{ route('subject') }}'  class="relative group cursor-pointer">
                     <img
                        src="{{ asset('/images/subjects.png') }}"
                         alt="Subject"

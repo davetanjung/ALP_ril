@@ -22,12 +22,13 @@
         <!-- Student Cards -->
         <div class="flex flex-col gap-y-2 mt-8">
             @forelse ($lecturers as $lecturer)
-                <div class="w-full flex items-center rounded-xl p-4 bg-white">
-                    <img src="{{ asset('/images/user_profile.png') }}" alt="User profile"
+            <a href="{{ route('lecturerDetail', ['id' => $lecturer->id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white">
+                {{--  <a href="{{ route('lecturerDetail', ['userId' => Auth::id(), 'id' => $lecturer->id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white"> --}}
+                    <img src="{{ asset($lecturer->profile_image) }}" alt="User profile"
                         class="w-12 h-12 rounded-full" />
                     <span class="text-md mx-8 font-bold">{{ $lecturer->name }}</span>
                     <span class="text-md text-gray-400 mx-8">{{ $lecturer->email }}</span>
-                </div>
+            </a>
             @empty
                 <p class="text-center text-gray-500">No Lecturers found.</p>
             @endforelse

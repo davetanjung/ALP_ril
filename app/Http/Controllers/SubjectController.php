@@ -11,7 +11,7 @@ class SubjectController extends Controller
     public function getAllSubjects()
     {
         // Retrieve all students when first loading the page
-        $subjects = Subject::all();
+        $subjects = Subject::paginate(10);
         return view('subject', [
             'subjects' => $subjects,
         ]);

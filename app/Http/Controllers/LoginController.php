@@ -18,6 +18,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            // return redirect()->intended(route('home', ['userId' => Auth::id()]));
             return redirect()->intended(route('home'));
         }
 
@@ -30,5 +31,14 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('welcome')); 
     }
 }

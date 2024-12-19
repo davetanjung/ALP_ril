@@ -21,7 +21,7 @@ class LecturerFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->email,    
-            'profile_image' => 'default.png'       
+            'profile_image' => $this->faker->imageUrl()    
         ];
     }
 }

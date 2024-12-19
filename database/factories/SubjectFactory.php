@@ -21,7 +21,7 @@ class SubjectFactory extends Factory
     {
         return [
             'name' => $this->faker->randomElement(['Algorithm & Programming', 'Web Development', 'Web Programming', 'Computer Network', 'Mobile Application Development', 'Object-Oriented Programming']),
-            'subject_image' => 'aaa.png'           
+            'subject_image' => $this->faker->imageUrl()       
         ];
     }
 }
