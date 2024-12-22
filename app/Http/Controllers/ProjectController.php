@@ -10,21 +10,20 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function getAllProjects()
+{
+    // Fetch projects with their related students_projects and group_projects
+    $projects = Project::with(['students_projects.groupProjects.student'])->paginate(10);
+
+    return view('project', [
+        'projects' => $projects,
+    ]);
+}
+
+
+    public function getProjectDetail($projectId)
     {
-        $projects = Project::with('students_projects') 
-            ->whereHas('students_projects', function ($query) {               
-                $query->whereIn('status', ['good', 'normal']);
-            })
-            ->paginate(10);            
+        $projects = Project::findorfail($projectId);
 
-            return view('project', [
-                'projects' => $projects,
-            ]);
-    }
-
-    public function getProjectDetail($projectId){
-        $projects = Project::findorfail($projectId);       
-        
         // get student_project berdasarkan project_id
         $students_project = Students_Project::where('project_id', $projectId)->first();
 
@@ -33,7 +32,7 @@ class ProjectController extends Controller
 
         // di mapping jadi collection untuk mendapatkan data student
         $students = $group_projects->map(function ($groupProject) {
-            return $groupProject->student;  
+            return $groupProject->student;
         });
 
         return view('projectDetail', [

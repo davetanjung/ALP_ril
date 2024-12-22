@@ -27,8 +27,10 @@
                 {{-- <a href="{{ route('studentDetail', ['userId' => Auth::id(), 'id' => $student->student_id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white"> --}}
                     <img src="{{ asset($student->image) }}" alt="User profile"
                         class="w-12 h-12 rounded-full" />
-                    <span class="text-md mx-8 font-bold">{{ $student->name }}</span>
-                    <span class="text-md text-gray-400 mx-8">{{ $student->email }}</span>
+                        <div class="flex flex-col md:flex-row">
+                            <span class="text-md mx-8 font-bold">{{ $student->name }}</span>
+                            <span class="text-sm md:text-md text-gray-400 mx-8">{{ $student->email }}</span>
+                        </div>
                 </a>
             @empty
                 <p class="text-center text-gray-500">No students found.</p>
