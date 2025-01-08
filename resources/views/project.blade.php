@@ -1,7 +1,14 @@
 <x-layout>
     <div class="min-h-screen w-full flex flex-col">
         <div class="flex justify-between w-full items-center my-8">
-            <span class="font-bold text-2xl">Projects</span>
+            <div class="flex items-center justify-between">
+                <span class="font-bold text-2xl">Projects</span>
+                <a href="{{ route('uploadProjectPage') }}" class="hover:opacity-80">
+                    <img src="{{ asset('images/plus-icon.png') }}" alt="Add Project" class="w-8 h-8">
+                </a>
+            </div>
+            
+            
         </div>
         <div class="flex flex-col gap-y-6 md:grid md:grid-cols-2 md:gap-6">
             @foreach ($projects as $project)

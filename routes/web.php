@@ -50,3 +50,9 @@ Route::get('/register', function () {
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showLogin');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+
+Route::get('/projects/upload', [ProjectController::class, 'showUploadProjectPage'])->name('uploadProjectPage');
+Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload'])->name('storeProjectUpload');
+
+
+Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
