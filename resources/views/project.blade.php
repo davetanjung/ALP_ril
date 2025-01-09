@@ -3,12 +3,14 @@
         <div class="flex justify-between w-full items-center my-8">
             <div class="flex items-center justify-between">
                 <span class="font-bold text-2xl">Projects</span>
-                <a href="{{ route('uploadProjectPage') }}" class="hover:opacity-80">
-                    <img src="{{ asset('images/plus-icon.png') }}" alt="Add Project" class="w-8 h-8">
-                </a>
+                @auth
+                    @if (auth()->user()->student_id) 
+                        <a href="{{ route('uploadProjectPage') }}" class="hover:opacity-80">
+                            <img src="{{ asset('images/plus-icon.png') }}" alt="Add Project" class="w-6 h-6">
+                        </a>
+                    @endif
+                @endauth 
             </div>
-            
-            
         </div>
         <div class="flex flex-col gap-y-6 md:grid md:grid-cols-2 md:gap-6">
             @foreach ($projects as $project)

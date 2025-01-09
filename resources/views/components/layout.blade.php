@@ -31,4 +31,5 @@
     @endif
 </body>
 <script src="{{ asset('js/navigation.js') }}"></script>
+<script src="{{ asset('js/register.js') }}"></script>
 </html>

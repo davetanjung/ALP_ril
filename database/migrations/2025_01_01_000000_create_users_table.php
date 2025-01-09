@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('profile_image');
+            $table->string('profile_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->unsignedBigInteger('lecturer_id')->nullable();
@@ -50,5 +51,8 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+        });
     }
 };

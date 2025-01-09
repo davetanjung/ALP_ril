@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
         'profile_image',
         'student_id',
         'lecturer_id',
@@ -57,6 +58,5 @@ class User extends Authenticatable
     public function lecturer(): BelongsTo {
         return $this ->belongsTo(Lecturer::class, 'lecturer_id');
     }
-
 
 }

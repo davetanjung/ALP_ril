@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Groups_Project;
 use App\Models\Student;
-use App\Models\Students_Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -77,6 +78,15 @@ class StudentController extends Controller
             'projects' => $projects,
             'studentProjects' => $studentProjects
             // 'userId' => $userId
+        ]);
+    }
+
+    public function showCreateStudentPage()
+    {
+        // $students = Student::all();
+
+        return view('createStudent', [
+            // 'students' => $students,
         ]);
     }
 }

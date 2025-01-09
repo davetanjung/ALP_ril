@@ -18,8 +18,13 @@ class Student extends Model
         'image'
     ];
 
-    public function group_projects(): HasMany {
-        return $this->hasMany(Groups_Project::class, 'student_id'); 
+    public function group_projects(): HasMany
+    {
+        return $this->hasMany(Groups_Project::class, 'student_id');
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'student_id', 'student_id');
+    }
 }
