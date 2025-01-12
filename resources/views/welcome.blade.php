@@ -21,7 +21,7 @@
                     <!-- Register form -->
                     <form action="{{ route('register') }}" method="GET">
                         <button type="submit" class="w-full bg-blue-400 text-white py-2 px-4 rounded-lg hover:bg-blue-500 transition">
-                            Register
+                            Sign Up
                         </button>
                     </form>    
                 

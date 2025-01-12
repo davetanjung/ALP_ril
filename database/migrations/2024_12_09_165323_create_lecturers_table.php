@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('uniqueCode')->default('SIFTUCBERJAYA2025');
             $table->string('profile_image')->nullable();
         });
     }

@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'Dave Tanjung',
-                'email' => 'dave@student.ciputra.ac.id',
+                'email' => 'dtanjung01@student.ciputra.ac.id',
                 'password' => 'password123',
                 'role' => 'student',
                 'nim' => '0706012310022', // NIM for Dave Tanjung
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Theressa Thebez',
-                'email' => 'theressa@student.ciputra.ac.id',
+                'email' => 'tnatasha02@student.ciputra.ac.id',
                 'password' => 'password123',
                 'role' => 'student',
                 'nim' => '0706012310001', // NIM for Theressa Thebez
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Darren Pandiangan',
-                'email' => 'darren@student.ciputra.ac.id',
+                'email' => 'dpandiangan@student.ciputra.ac.id',
                 'password' => 'password123',
                 'role' => 'student',
                 'nim' => '0706012310020', // NIM for Darren Pandiangan

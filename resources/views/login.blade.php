@@ -44,9 +44,10 @@
                     </div>
 
                 </form>
-
                 <!-- Password Field -->
-
+                <div class="text-center">
+                    <span>Don't have an account? </span><a href="{{ route('register') }}" class="text-indigo-600 hover:underline">Sign Up Here</a>
+                </div>                    
             </div>
         </div>
     </div>
