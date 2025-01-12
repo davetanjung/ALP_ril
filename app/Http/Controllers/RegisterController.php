@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'nim' => 'required|integer|unique:students,nim',
+            'nim' => 'required|string|max:50|unique:students,nim',
             'email' => 'required|email|unique:users,email',
             'name' => 'required|string|max:255|unique:users,name',
             'password' => 'required|string|min:3|confirmed',

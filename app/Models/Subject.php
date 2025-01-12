@@ -13,7 +13,6 @@ class Subject extends Model
     protected $fillable = [
         'name',
         'subject_image',
-        'lecturer_subject_id'
      ];
 
      public function lecturer_subject()

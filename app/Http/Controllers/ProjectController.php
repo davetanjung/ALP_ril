@@ -135,13 +135,18 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $subjects = Lecturers_Subject::all(); 
-        $students = Student::all(); 
+        $students_project = Students_Project::where('project_id', $project->project_id)->first();
+
+        $group_projects = Groups_Project::where('student_project_id', $students_project->student_project_id)->get();
+    
+        $students = $group_projects->map(function ($groupProject) {
+            return $groupProject->student;
+        });
 
         // Pass data to the view
-        return view('projects.edit', [
+        return view('editProject', [
             'project' => $project,
-            'subjects' => $subjects,
+            'subjects' => Lecturers_Subject::all(),
             'students' => $students,
         ]);
     }

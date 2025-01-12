@@ -15,11 +15,27 @@ class Lecturer_SubjectSeeder extends Seeder
      */
     public function run(): void
     {
-        $subjects = Subject::factory(6)->create();
+        $subject1 = Subject::find(1);  // Assuming subject with ID 1 exists
+        $subject2 = Subject::find(2);  // Assuming subject with ID 2 exists
 
-        Lecturers_Subject::factory()->count(100)
-            ->recycle($subjects)
-            ->recycle(Lecturer::factory())
-            ->create();
+        // Get the lecturers
+        $lecturer1 = Lecturer::find(1);  // Lecturer 1
+        $lecturer2 = Lecturer::find(2);  // Lecturer 2
+
+        // Create lecturer-subject relationships
+        Lecturers_Subject::create([
+            'year' => '2025',
+            'semester' => 'Spring',  
+            'lecturer_id' => $lecturer1->id,
+            'subject_id' => $subject1->id,
+        ]);
+
+        Lecturers_Subject::create([
+            'year' => '2025',
+            'semester' => 'Spring',  
+            'lecturer_id' => $lecturer2->id,
+            'subject_id' => $subject2->id,
+        ]);
+
     }
 }

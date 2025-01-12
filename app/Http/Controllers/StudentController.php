@@ -72,7 +72,6 @@ class StudentController extends Controller
             return $groupProject->student_project->project;
         });
 
-
         return view('studentDetail', [
             'student' => $student,
             'projects' => $projects,
