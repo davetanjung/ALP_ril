@@ -45,6 +45,7 @@ Route::get('/lecturer/search', [LecturerController::class, 'index'])->name('sear
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
 Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');
 
+
 Route::get('/subject', [SubjectController::class, 'getAllSubjects'])->name('subject');
 Route::get('/subject/{id}', [SubjectController::class, 'getSubjectProjects'])->name('subjectDetail');
 
@@ -60,3 +61,4 @@ Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload']
 
 
 Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
+Route::get('/projects/{subject}', [SubjectController::class, 'index'])->name('subjectProjects');
