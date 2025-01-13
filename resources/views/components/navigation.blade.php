@@ -31,6 +31,10 @@
             class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'project' || Route::currentRouteName() == 'projectDetail' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Project
         </a>
+        <a href="{{ route('credit') }}"
+        class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'credit' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
+        Credit
+    </a>
     </nav>
     @auth        
         <div>
@@ -69,5 +73,9 @@
             class="py-2 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'project' || Route::currentRouteName() == 'projectDetail' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Project
         </a>
+        <a href="{{ route('credit') }}"
+    class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'credit' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
+    Credit
+</a>
     </div>
 </div>

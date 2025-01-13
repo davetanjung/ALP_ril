@@ -11,6 +11,7 @@ use App\Http\Middleware\UserPathMiddleware;
 use App\Models\Project;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,7 +59,18 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/projects/upload', [ProjectController::class, 'showUploadProjectPage'])->name('uploadProjectPage');
 Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload'])->name('storeProjectUpload');
 
-
-
 Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
 Route::get('/projects/{subject}', [SubjectController::class, 'index'])->name('subjectProjects');
+
+Route::get('/credit', function () {
+    return view('credit');
+})->name('credit');
+
+
+Route::post('/profile/update-image', [UserController::class, 'updateProfileImage'])->name('updateProfileImage');
+
+Route::get('/subject/add', [SubjectController::class, 'showAddSubjectForm'])->name('addSubjectForm');
+Route::post('/subject/add', [SubjectController::class, 'storeSubject'])->name('storeSubject');
+
+
+
