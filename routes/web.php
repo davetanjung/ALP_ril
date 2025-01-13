@@ -69,8 +69,8 @@ Route::get('/credit', function () {
 
 Route::post('/profile/update-image', [UserController::class, 'updateProfileImage'])->name('updateProfileImage');
 
-Route::get('/subject/add', [SubjectController::class, 'showAddSubjectForm'])->name('addSubjectForm');
-Route::post('/subject/add', [SubjectController::class, 'storeSubject'])->name('storeSubject');
+Route::get('/subjects/add', [SubjectController::class, 'showAddSubjectForm'])->name('addSubjectForm');
+Route::post('/subjects/add', [SubjectController::class, 'storeSubject'])->name('storeSubject');
 
 
 

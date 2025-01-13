@@ -73,25 +73,36 @@ class SubjectController extends Controller
 
     // Handle Add Subject Form Submission
     public function storeSubject(Request $request)
-    {
-        // Validate the form data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'subject_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+{
+    // Validate the form data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'subject_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        'year' => 'required|integer',
+        'semester' => 'required|string',
+    ]);
 
-        // Handle the image upload
-        $filePath = $request->file('subject_image')->store('uploads', 'public');
+    // Handle the image upload
+    $filePath = $request->file('subject_image')->store('uploads', 'public');
 
-        // Create a new subject
-        Subject::create([
-            'name' => $request->name,
-            'subject_image' => 'storage/' . $filePath,
-        ]);
+    // Create a new subject
+    $subject = Subject::create([
+        'name' => $request->name,
+        'subject_image' => 'storage/' . $filePath,
+    ]);
 
-        // Redirect back to the Subject page with a success message
-        return redirect()->route('subject')->with('success', 'Subject added successfully!');
+    // Link the subject to the lecturer with year and semester
+    \DB::table('lecturers_subjects')->insert([
+        'lecturer_id' => auth()->user()->lecturer_id, // Assuming the lecturer is authenticated
+        'subject_id' => $subject->id,
+        'year' => $request->year,
+        'semester' => $request->semester,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
 
-        
-    }
+    // Redirect back to the Subject page with a success message
+    return redirect()->route('subject')->with('success', 'Subject added successfully!');
+}
+
 }
