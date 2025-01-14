@@ -46,7 +46,7 @@
     </nav>
 
     @auth
-        <div class="hidden md:block">
+        <div class="hidden md:block ml-4 ">
             <a href="{{ route('profile', Auth::user()->id) }}">
                 <img src="{{ asset(Auth::user()->profile_image) }}" alt="User Profile"
                     class="w-16 h-16 object-cover rounded-full border-[#232360] border">
