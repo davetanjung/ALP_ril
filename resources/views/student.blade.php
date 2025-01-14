@@ -2,7 +2,7 @@
     <div class="min-h-screen w-full flex flex-col">
         <!-- Search Bar -->
         <div class="flex flex-col sm:flex-row justify-between w-full items-center mt-8">
-            <span class="font-bold text-2xl">List of Students</span>
+            <span class="font-bold text-2xl mb-4 md:mb-0">List of Students</span>
             <form action="{{ route('searchStudent') }}" method="GET" class="flex items-center border-2 rounded-xl p-1 bg-white">
                 <input
                     type="text"
