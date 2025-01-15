@@ -18,7 +18,7 @@
     </a>
 
 
-    <nav id="menu" class="hidden md:flex md:w-full md:justify-center">
+    <nav id="menu" class="hidden md:flex md:w-full md:justify-center md:items-center">
         <a href="{{ route('home') }}"
             class="px-8 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Home
@@ -62,15 +62,19 @@
         </svg>
     </button>
     @guest
-        <div class="flex items-center">
-            <a href="{{ route('login') }}"
-                class="border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Login</a>
-            <a href="{{ route('register') }}"
-                class="ml-2 border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Register</a>
+        <div class="hidden md:block mt-4 flex items-center justify-center">
+            <a href="{{ route('welcome') }}"
+                class="px-6 py-2 text-white font-semibold bg-blue-600 rounded-full shadow-md transition transform hover:bg-blue-700 hover:-translate-y-1 focus:outline-none focus:ring focus:ring-blue-300">
+                Sign In
+            </a>
         </div>
     @endguest
     <div id="mobileMenu"
         class="hidden absolute z-10 top-28 left-0 w-full bg-[#F3F4F8] flex flex-col items-center justify-center py-2">
+        <a href="{{ route('welcome') }}"
+            class="px-6 py-2 text-white font-semibold bg-blue-600 rounded-full shadow-md transition transform hover:bg-blue-700 hover:-translate-y-1 focus:outline-none focus:ring focus:ring-blue-300">
+            Sign In
+        </a>
         <a href="{{ route('home') }}"
             class="py-2 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Home
