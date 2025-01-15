@@ -1,0 +1,17 @@
+@keyframes shine {
+    0% {
+        background-position: -200%; /* Start far left */
+    }
+    100% {
+        background-position: 200%; /* Move far right */
+    }
+}
+
+#title {
+    background: linear-gradient(90deg, #a6aadb, #2536EB, #a6aadb); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%; 
+    animation: shine 8s infinite linear; 
+}
