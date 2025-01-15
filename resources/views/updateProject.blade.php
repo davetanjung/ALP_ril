@@ -12,9 +12,9 @@
             </div>
         @endif
 
-        <form action="{{ route('updateProject', $project->id) }}" method="POST" enctype="multipart/form-data"
-            class="mt-6">
+        <form action="{{ route('updateProject', $project->project_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="mb-4">
                 <label for="title" class="block text-sm font-medium text-gray-700">Project Title</label>
                 <input type="text" name="title" id="title" class="mt-2 p-2 border rounded w-full"
@@ -53,7 +53,7 @@
             </div>
 
             <div class="mb-4">
-                <label for="image" class="block text-sm font-medium text-gray-700">Project Image</label>
+                <label for="image" class="block text-sm font-medium text-gray-700">Project Image (.jpg .jpeg & .png)</label>
                 <input type="file" name="image" id="image" class="mt-2 p-2 border rounded w-full">
                 @if ($project->image)
                     <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" class="mt-4 w-32">
@@ -62,19 +62,27 @@
             </div>
 
             <div class="mb-4">
-                <label for="students" class="block text-sm font-medium text-gray-700">Add Students to Group</label>
-                <select name="students[]" id="students" multiple class="mt-2 p-2 border rounded w-full">
-                    @foreach ($students as $student)
-                        <option value="{{ $student->student_id }}"
-                            {{ in_array($student->student_id, $project->students->pluck('student_id')->toArray()) ? 'selected' : '' }}>
-                            {{ $student->name }}
-                        </option>
+                <label for="students" class="block text-sm font-medium text-gray-700">Change the collaborators:</label>
+                <div id="student-picker" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                    @foreach ($allStudents as $student)
+                    <div 
+                        class="student-card p-4 border rounded-lg flex items-center space-x-4 cursor-pointer hover:bg-gray-200 active:scale-90 transition"
+                        data-student-id="{{ $student->student_id }}"
+                        onclick="toggleStudentSelection(this)"
+                        data-selected="{{ $selectedStudents->contains('student_id', $student->student_id) ? 'true' : 'false' }}"
+                    >
+                        <img src="{{ asset('storage/' . $student->image) }}" alt="Profile Image" class="w-12 h-12 rounded-full">
+                        <span class="text-gray-700">{{ $student->name }}</span>
+                        <input type="checkbox" name="students[]" value="{{ $student->student_id }}" 
+                            {{ $selectedStudents->contains('student_id', $student->student_id) ? 'checked' : '' }} 
+                            class="hidden">
+                    </div>
                     @endforeach
-                </select>
-                <small class="text-gray-500">Hold Ctrl (Windows) or Cmd (Mac) to select multiple students.</small>
-            </div>
+                </div>
+                <small class="text-gray-500">Click on a card to select/deselect students.</small>
+            </div>                   
 
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Add
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update
                 Project</button>
         </form>
     </div>

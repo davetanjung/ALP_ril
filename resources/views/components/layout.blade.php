@@ -33,4 +33,5 @@
 <script src="{{ asset('js/navigation.js') }}"></script>
 <script src="{{ asset('js/register.js') }}"></script>
 <script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ asset('js/project.js') }}"></script>
 </html>

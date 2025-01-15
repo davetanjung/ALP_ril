@@ -102,52 +102,83 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-
-        $this->authorize('update', $project);
-
+        // Validate the request
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'assignment_type' => 'required|string',
-            'lecturer_subject_id' => 'required|exists:lecturer_subjects,lecturer_subject_id',
+            'lecturer_subject_id' => 'required|exists:lecturers_subjects,lecturer_subject_id',
             'students' => 'required|array',
             'students.*' => 'exists:students,student_id',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-
+    
+        // Handle image upload if a new image is provided
+        $imagePath = $project->image; // Keep existing image by default
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('project_images', 'public');
-            $project->image = $imagePath;
         }
-
+    
+        // Update project details
         $project->update([
             'title' => $request->title,
             'description' => $request->description,
             'assignment_type' => $request->assignment_type,
             'lecturer_subject_id' => $request->lecturer_subject_id,
+            'image' => $imagePath,
         ]);
-
-        // Attach the students to the project (many-to-many relationship)
-        $project->students()->sync($request->students);
-
-        return redirect()->route('project')->with('success', 'Project updated successfully!');
+    
+        // Find or create the student project
+        $studentProject = Students_Project::firstOrCreate(
+            ['project_id' => $project->project_id],
+            ['status' => 'Pending']
+        );
+    
+        // Update student project image if there's a new image
+        if ($request->hasFile('image')) {
+            $studentProject->update([
+                'image' => $imagePath
+            ]);
+        }
+    
+        // Delete existing group projects
+        Groups_Project::where('student_project_id', $studentProject->student_project_id)->delete();
+    
+        // Create new group projects for selected students
+        foreach ($request->students as $studentId) {
+            Groups_Project::create([
+                'student_project_id' => $studentProject->student_project_id,
+                'student_id' => $studentId
+            ]);
+        }
+    
+        return redirect()->route('getAllProjects')->with('success', 'Project updated successfully!');
     }
 
     public function edit(Project $project)
-    {
-        $students_project = Students_Project::where('project_id', $project->project_id)->first();
+{
 
+        $allStudents = Student::all();
+        
+        // Get the student project for this project
+        $students_project = Students_Project::where('project_id', $project->project_id)->firstOrFail();
+        
+        // Get all group projects for this student project
         $group_projects = Groups_Project::where('student_project_id', $students_project->student_project_id)->get();
-    
-        $students = $group_projects->map(function ($groupProject) {
+        
+        // Get currently selected students
+        $selectedStudents = $group_projects->map(function ($groupProject) {
             return $groupProject->student;
         });
+        
+        // Get all subjects for the dropdown
+        $subjects = Lecturers_Subject::with('subject')->get();
 
-        // Pass data to the view
-        return view('editProject', [
+        return view('updateProject', [
             'project' => $project,
-            'subjects' => Lecturers_Subject::all(),
-            'students' => $students,
+            'subjects' => $subjects,
+            'allStudents' => $allStudents,         // All available students
+            'selectedStudents' => $selectedStudents // Currently selected students
         ]);
-    }
+}
 }

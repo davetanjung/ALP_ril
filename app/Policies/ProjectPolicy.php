@@ -23,8 +23,8 @@ class ProjectPolicy
         }
 
         // Check if the project is associated with the student
-        return $project->students_projects->contains(function ($studentsProject) use ($user) {
-            return $studentsProject->groupProjects->contains('student_id', $user->student_id);
-        });
+        // return $project->students_projects->contains(function ($studentsProject) use ($user) {
+        //     return $studentsProject->groupProjects->contains('student_id', $user->student_id);
+        // });
     }
 }

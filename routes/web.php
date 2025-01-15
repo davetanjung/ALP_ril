@@ -22,11 +22,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::middleware(['auth', UserPathMiddleware::class])->group(function () {
     Route::get('/user/{userId}/profile', [HomeController::class, 'profile'])->name('profile');
-    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('editProject');
-    Route::post('/projects/{project}/update', [ProjectController::class, 'update'])->name('updateProject');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('editProject');   
+    Route::put('/projects/{project}/update', [ProjectController::class, 'update'])->name('updateProject');
 });
 
 Route::get('/', function () {
@@ -45,6 +47,10 @@ Route::get('/lecturer/{id}', [LecturerController::class, 'getLecturerSubjects'])
 
 
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
+Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
+Route::get('/projects/upload', [ProjectController::class, 'showUploadProjectPage'])->name('uploadProjectPage');
+Route::get('/projects/{subject}', [SubjectController::class, 'index'])->name('subjectProjects');
+Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload'])->name('storeProjectUpload'); 
 Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');
 
 
@@ -56,12 +62,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showLogin');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
-
-Route::get('/projects/upload', [ProjectController::class, 'showUploadProjectPage'])->name('uploadProjectPage');
-Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload'])->name('storeProjectUpload');
-
-Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
-Route::get('/projects/{subject}', [SubjectController::class, 'index'])->name('subjectProjects');
 
 Route::get('/credit', function () {
     return view('credit');
