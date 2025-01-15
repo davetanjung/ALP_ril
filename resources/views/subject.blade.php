@@ -5,12 +5,15 @@
             <!-- Title -->
             <h1 class="font-bold text-3xl">Subjects</h1>
             
-            <!-- Add Subject Button -->
-            <a href="{{ route('addSubjectForm') }}" class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            @auth
+            @if (Auth::user()->role == 'lecturer')
+                  <a href="{{ route('addSubjectForm') }}" class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                 <img src="{{ asset('images/plus-icon.png') }}" alt="Add Subject" class="w-6 h-6">
                 <span>Add Subject</span>
             </a>
-            
+            @endif 
+            @endauth
+          
         </div>
         
         <!-- Subjects Grid -->
