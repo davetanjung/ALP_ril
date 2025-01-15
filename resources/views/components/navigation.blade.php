@@ -62,10 +62,12 @@
         </svg>
     </button>
     @guest
-        <a href="{{ route('login') }}"
-            class="border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Login</a>
-        <a href="{{ route('register') }}"
-            class="ml-2 border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Register</a>
+        <div class="flex items-center">
+            <a href="{{ route('login') }}"
+                class="border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Login</a>
+            <a href="{{ route('register') }}"
+                class="ml-2 border-2 px-8 py-1 text-black transition hover:text-black/70 focus:outline-none rounded-full">Register</a>
+        </div>
     @endguest
     <div id="mobileMenu"
         class="hidden absolute z-10 top-28 left-0 w-full bg-[#F3F4F8] flex flex-col items-center justify-center py-2">
