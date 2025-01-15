@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
@@ -29,7 +29,7 @@ Route::middleware(['auth', UserPathMiddleware::class])->group(function () {
     Route::post('/projects/{project}/update', [ProjectController::class, 'update'])->name('updateProject');
 });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 })->name('home');
 
@@ -40,8 +40,9 @@ Route::get('/student/search', [StudentController::class, 'index'])->name('search
 Route::get('/student/{id}', [StudentController::class, 'getStudentProjects'])->name('studentDetail');
 
 Route::get('/lecturer', [LecturerController::class, 'getAllLecturers'])->name('lecturer');
-Route::get('/lecturer/{id}', [LecturerController::class, 'getLecturerSubjects'])->name('lecturerDetail');
 Route::get('/lecturer/search', [LecturerController::class, 'index'])->name('searchLecturer');
+Route::get('/lecturer/{id}', [LecturerController::class, 'getLecturerSubjects'])->name('lecturerDetail');
+
 
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
 Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');
