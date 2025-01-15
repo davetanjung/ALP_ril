@@ -4,15 +4,15 @@
         <h1 class="text-6xl font-extrabold text-blue-600 text-center mb-4 px-2 py-4" id="title">ProjectX</h1>
         <!-- Subtitle Section -->
         <p class="text-lg text-gray-700 text-center max-w-3xl leading-7 mt-12">
-            Welcome to the <span class="font-bold text-blue-600">ultimate space</span> where creativity meets
+            Welcome to the <span id="title" class="font-bold text-blue-600">ultimate space</span> where creativity meets
             opportunity!
-            <span class="italic text-gray-900">Share your projects</span> and let your ideas shine.
+            <span id="title" class="italic text-gray-900">Share your projects</span> and let your ideas shine.
             This is your chance to <span class="font-bold underline decoration-blue-400 decoration-2">present your hard
                 work</span>
-            to a wide audience—<span class="font-semibold text-blue-600">peers</span>,
-            <span class="font-semibold text-blue-600">mentors</span>, and
-            <span class="font-semibold text-blue-600">professionals</span> who can appreciate your
-            <span class="text-indigo-600 font-bold">talent</span> and <span
+            to a wide audience—<span id="title" class="font-semibold text-blue-600">peers</span>,
+            <span id="title" class="font-semibold text-blue-600">mentors</span>, and
+            <span id="title" class="font-semibold text-blue-600">professionals</span> who can appreciate your
+            <span id="title" class="text-indigo-600 font-bold">talent</span> and <span id="title"
                 class="text-indigo-600 font-bold">dedication</span>.
         </p>
     </div>
