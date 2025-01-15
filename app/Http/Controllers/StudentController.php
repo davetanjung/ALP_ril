@@ -54,7 +54,6 @@ class StudentController extends Controller
     //     ]);
     // }
 
-    // public function getStudentProjects($userId, $studentId)
     public function getStudentProjects($studentId)
     {
         // $userId = Auth::id(); 

@@ -8,10 +8,10 @@
 }
 
 #title {
-    background: linear-gradient(90deg, #a6aadb, #2536EB, #a6aadb); 
+    background: linear-gradient(90deg, #8188d3, #2536EB, #8188d3); 
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%; 
-    animation: shine 8s infinite linear; 
+    animation: shine 4s infinite linear; 
 }

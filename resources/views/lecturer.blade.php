@@ -1,11 +1,11 @@
 <x-layout>
     <div class="min-h-screen w-full flex flex-col">
         <!-- Search Bar -->
-        <div class="flex justify-between w-full items-center mt-8">
-            <span class="font-bold text-2xl">List of Lecturers</span>
+        <div class="flex flex-col sm:flex-row justify-between w-full items-center mt-8">
+            <span class="font-bold text-2xl mb-4 md:mb-0">List of Lecturers</span>
             <form method="GET" action="{{ route('searchLecturer') }}"
                 class="flex items-center border-2 rounded-xl p-1 bg-white">
-                <input type="text" placeholder="Search..." class="border-none outline-none text-gray-400"
+                <input type="text" placeholder="Search..." class="border-none outline-none w-full"
                     value="{{ $search ?? '' }}" name="search" />
                 <button type="submit">
                     <img src="{{ asset('/images/search_icon.png') }}" alt="Search icon"
@@ -18,8 +18,7 @@
         <div class="flex flex-col gap-y-2 mt-8">
             @forelse ($lecturers as $lecturer)
                 <a href="{{ route('lecturerDetail', ['id' => $lecturer->id]) }}"
-                    class="w-full flex items-center rounded-xl p-4 bg-white">
-                    {{--  <a href="{{ route('lecturerDetail', ['userId' => Auth::id(), 'id' => $lecturer->id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white"> --}}
+                    class="w-full flex items-center rounded-xl p-4 bg-white">                    
                     <img src="{{ asset($lecturer->profile_image) }}" alt="User profile"
                         class="w-12 h-12 rounded-full" />
                     <div class="flex flex-col md:flex-row">

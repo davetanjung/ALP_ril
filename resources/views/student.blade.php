@@ -24,7 +24,6 @@
         <div class="flex flex-col gap-y-2 mt-8 student-list">
             @forelse ($students as $student)
             <a href="{{ route('studentDetail', ['id' => $student->student_id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white">
-                {{-- <a href="{{ route('studentDetail', ['userId' => Auth::id(), 'id' => $student->student_id]) }}" class="w-full flex items-center rounded-xl p-4 bg-white"> --}}
                     <img src="{{ asset($student->image) }}" alt="User profile"
                         class="w-12 h-12 rounded-full" />
                         <div class="flex flex-col md:flex-row">
