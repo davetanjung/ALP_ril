@@ -30,23 +30,21 @@
             <div class="mb-4">
                 <label for="assignment_type" class="block text-sm font-medium text-gray-700">Assignment Type</label>
                 <select name="assignment_type" id="assignment_type" class="mt-2 p-2 border rounded w-full" required>
-                    <option value="Homework" {{ $project->assignment_type == 'Homework' ? 'selected' : '' }}>Homework
+                    <option value="AFL 1" {{ $project->assignment_type == 'AFL 1' ? 'selected' : '' }}>'AFL 1
                     </option>
-                    <option value="Final Project" {{ $project->assignment_type == 'Final Project' ? 'selected' : '' }}>
-                        Final Project</option>
-                    <option value="Lab Report" {{ $project->assignment_type == 'Lab Report' ? 'selected' : '' }}>Lab
-                        Report</option>
+                    <option value="AFL 2" {{ $project->assignment_type == 'AFL 2' ? 'selected' : '' }}>
+                        AFL 2</option>
+                    <option value="AFL 3" {{ $project->assignment_type == 'AFL 3' ? 'selected' : '' }}>AFL 3</option>
+                    <option value="ALP" {{ $project->assignment_type == 'ALP' ? 'selected' : '' }}>ALP</option>
                 </select>
             </div>
 
             <div class="mb-4">
                 <label for="lecturer_subject_id" class="block text-sm font-medium text-gray-700">Subject</label>
-                <select name="lecturer_subject_id" id="lecturer_subject_id" class="mt-2 p-2 border rounded w-full"
-                    required>
+                <select name="lecturer_subject_id" id="lecturer_subject_id" class="mt-2 p-2 border rounded w-full" required>
                     @foreach ($subjects as $subject)
-                        <option value="{{ $subject->lecturer_subject_id }}"
-                            {{ $project->lecturer_subject_id == $subject->lecturer_subject_id ? 'selected' : '' }}>
-                            {{ $subject->name }} ({{ $subject->year }} - {{ $subject->semester }})
+                        <option value="{{ $subject->id }}">
+                            {{ $subject->name }} 
                         </option>
                     @endforeach
                 </select>

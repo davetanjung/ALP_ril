@@ -1,9 +1,8 @@
 <x-layout>
     <div class="min-h-screen flex flex-col items-center justify-center px-6 pb-32">
-        <!-- Title Section -->
-        <h1 class="text-6xl font-extrabold text-blue-600 text-center mb-4 px-2 py-4" id="title">ProjectX</h1>
+        <h1 class="text-6xl sm:text-8xl font-extrabold text-blue-600 text-center mb-4 px-2 py-4" id="title">ProjectX</h1>
         <!-- Subtitle Section -->
-        <p class="text-lg text-gray-700 text-center max-w-3xl leading-7 mt-12">
+        <p class="text-xl text-gray-700 text-center max-w-3xl leading-7 mt-12">
             Welcome to the <span id="title" class="font-bold text-blue-600">ultimate space</span> where creativity meets
             opportunity!
             <span id="title" class="italic text-gray-900">Share your projects</span> and let your ideas shine.

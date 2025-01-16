@@ -27,10 +27,8 @@
                 <div class="mb-4">
                     <label for="semester" class="block text-sm font-medium">Semester</label>
                     <select name="semester" id="semester" required class="w-full border rounded-lg p-2">
-                        <option value="Spring">Spring</option>
-                        <option value="Summer">Summer</option>
-                        <option value="Fall">Fall</option>
-                        <option value="Winter">Winter</option>
+                        <option value="Spring">Odd</option>
+                        <option value="Summer">Event</option>
                     </select>
                 </div>
 

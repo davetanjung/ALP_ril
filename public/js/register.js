@@ -10,17 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show or hide the "NIM" field based on the selected role
             const studentFields = document.getElementById('student-fields');
             const lecturerFields = document.getElementById('lecturer-fields');
+            const uniqueCodeInput = document.getElementById('uniqueCode');
 
             if (role === 'student') {
                 studentFields.classList.remove('hidden');
                 lecturerFields.classList.add('hidden');
                 document.getElementById('uniqueCode').removeAttribute('required');
                 document.getElementById('nim').setAttribute('required', 'required');
+                uniqueCodeInput.setAttribute('disabled', 'true');  // Disable uniqueCode field for students
             } else if (role === 'lecturer') {
                 studentFields.classList.add('hidden');
                 lecturerFields.classList.remove('hidden');
                 document.getElementById('uniqueCode').setAttribute('required', 'required');
                 document.getElementById('nim').removeAttribute('required');
+                uniqueCodeInput.removeAttribute('disabled');  // Enable uniqueCode field for lecturers
             }
 
             // Optional: Highlight the selected role button (add and remove active classes)
@@ -31,4 +34,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-

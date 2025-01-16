@@ -1,7 +1,7 @@
 <x-layout>
     <div class="min-h-screen w-full flex flex-col">
-        <div class="flex justify-between w-full items-center my-8">
-            <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row justify-between w-full items-center my-8">
+            <div class="flex items-center justify-between mb-8 md:mb-0">
                 <span class="font-bold text-3xl text-center sm:text-start">Projects</span>
                 @auth
                     @if (auth()->user()->student_id) 

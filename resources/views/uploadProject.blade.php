@@ -27,9 +27,10 @@
             <div class="mb-4">
                 <label for="assignment_type" class="block text-sm font-medium text-gray-700">Assignment Type</label>
                 <select name="assignment_type" id="assignment_type" class="mt-2 p-2 border rounded w-full" required>
-                    <option value="Homework">Homework</option>
-                    <option value="Final Project">Final Project</option>
-                    <option value="Lab Report">Lab Report</option>
+                    <option value="AFL 1">AFL 1</option>
+                    <option value="AFL 2">AFL 2</option>
+                    <option value="AFL 3">AFL 3</option>
+                    <option value="ALP">ALP</option>
                 </select>
             </div>
 
@@ -37,13 +38,13 @@
                 <label for="lecturer_subject_id" class="block text-sm font-medium text-gray-700">Subject</label>
                 <select name="lecturer_subject_id" id="lecturer_subject_id" class="mt-2 p-2 border rounded w-full" required>
                     @foreach ($subjects as $subject)
-                        <option value="{{ $subject->lecturer_subject_id }}">
-                            {{ $subject->name }} ({{ $subject->year }} - {{ $subject->semester }})
+                        <option value="{{ $subject->id }}">
+                            {{ $subject->name }} 
                         </option>
                     @endforeach
                 </select>
             </div>
-
+            
             <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-700">Project Image</label>
                 <input type="file" name="image" id="image" class="mt-2 p-2 border rounded w-full" required>

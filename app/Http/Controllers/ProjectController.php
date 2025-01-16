@@ -8,6 +8,7 @@ use App\Models\Lecturers_Subject;
 use App\Models\Students_Project;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ProjectController extends Controller
@@ -77,8 +78,11 @@ class ProjectController extends Controller
 
     public function showUploadProjectPage()
     {
-        $subjects = Lecturers_Subject::with('subject')->get();
-        $students = Student::all(); // Fetch all students for the dropdown
+        // $subjects = Lecturers_Subject::with('subject')->get();
+        // $students = Student::all(); // Fetch all students for the dropdown
+
+        $subjects = Subject::all();  // Fetch all subjects
+        $students = Student::all();
 
         return view('uploadProject', [
             'subjects' => $subjects,
@@ -138,13 +142,13 @@ class ProjectController extends Controller
             'lecturer_subject_id' => 'required|exists:lecturers_subjects,lecturer_subject_id',
             'students' => 'required|array',
             'students.*' => 'exists:students,student_id',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
         // Handle image upload if a new image is provided
         $imagePath = $project->image; // Keep existing image by default
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('project_images', 'public');
+            $imagePath = $request->file('image')->store('uploads', 'public');
         }
     
         // Update project details
@@ -200,7 +204,7 @@ class ProjectController extends Controller
         });
         
         // Get all subjects for the dropdown
-        $subjects = Lecturers_Subject::with('subject')->get();
+        $subjects = Subject::all();
 
         return view('updateProject', [
             'project' => $project,

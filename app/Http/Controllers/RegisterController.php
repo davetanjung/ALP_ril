@@ -19,6 +19,11 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        // If role is student, remove uniqueCode from the request
+        if ($request->role === 'student') {
+            $request->request->remove('uniqueCode');
+        }
+
         // Validate the incoming request data
         $request->validate([
             'email' => 'required|email|unique:users,email',
@@ -44,7 +49,7 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'nim' => $request->nim,
             ]);
-        } 
+        }
         if ($request['role'] === 'lecturer') {
             $student = null;
             $lecturer = Lecturer::create([
