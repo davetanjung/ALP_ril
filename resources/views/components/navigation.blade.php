@@ -71,10 +71,12 @@
     @endguest
     <div id="mobileMenu"
         class="hidden absolute z-10 top-28 left-0 w-full bg-[#F3F4F8] flex flex-col items-center justify-center py-2">
-        <a href="{{ route('welcome') }}"
-            class="px-6 py-2 text-white font-semibold bg-blue-600 rounded-full shadow-md transition transform hover:bg-blue-700 hover:-translate-y-1 focus:outline-none focus:ring focus:ring-blue-300">
-            Sign In
-        </a>
+        @guest
+            <a href="{{ route('welcome') }}"
+                class="px-6 py-2 text-white font-semibold bg-blue-600 rounded-full shadow-md transition transform hover:bg-blue-700 hover:-translate-y-1 focus:outline-none focus:ring focus:ring-blue-300">
+                Sign In
+            </a>
+        @endguest
         <a href="{{ route('home') }}"
             class="py-2 text-black transition hover:text-black/70 focus:outline-none {{ Route::currentRouteName() == 'home' ? 'text-[#232360] font-bold' : 'text-[#232360] text-opacity-[0.42]' }}">
             Home

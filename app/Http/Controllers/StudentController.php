@@ -41,7 +41,6 @@ class StudentController extends Controller
         return view('student', [
             'students' => $students,
             'search' => $search,
-            // 'userId' => $userId
         ]);
     }
 

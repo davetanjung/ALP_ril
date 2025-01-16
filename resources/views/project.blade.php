@@ -2,7 +2,7 @@
     <div class="min-h-screen w-full flex flex-col">
         <div class="flex justify-between w-full items-center my-8">
             <div class="flex items-center justify-between">
-                <span class="font-bold text-2xl">Projects</span>
+                <span class="font-bold text-3xl text-center sm:text-start">Projects</span>
                 @auth
                     @if (auth()->user()->student_id) 
                         <a href="{{ route('uploadProjectPage') }}" class="hover:opacity-80">
@@ -11,6 +11,21 @@
                     @endif
                 @endauth 
             </div>
+            <form action="{{ route('searchProject') }}" method="GET" class="flex items-center border-2 rounded-xl p-1 bg-white">
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search..."
+                    value="{{ $search ?? '' }}"
+                    class="border-none outline-none w-full"
+                />
+                <button type="submit">
+                    <img
+                        src="{{ asset('/images/search_icon.png') }}"
+                        alt="Search icon"
+                        class="w-5 h-5 cursor-pointer" />
+                </button>
+            </form>
         </div>
         <div class="flex flex-col gap-y-6 md:grid md:grid-cols-2 md:gap-6">
             @foreach ($projects as $project)

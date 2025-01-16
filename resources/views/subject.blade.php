@@ -3,7 +3,7 @@
         <!-- Header Section -->
         <div class="w-full my-8 px-4 md:px-8 flex items-center justify-between">
             <!-- Title -->
-            <h1 class="font-bold text-3xl">Subjects</h1>
+            <h1 class="font-bold text-3xl w-full text-center sm:text-start">Subjects</h1>
             
             @auth
             @if (Auth::user()->role == 'lecturer')

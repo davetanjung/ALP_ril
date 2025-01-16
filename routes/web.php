@@ -49,6 +49,7 @@ Route::get('/lecturer/{id}', [LecturerController::class, 'getLecturerSubjects'])
 Route::get('/project', [ProjectController::class, 'getAllProjects'])->name('project');
 Route::get('/projects', [ProjectController::class, 'getAllProjects'])->name('getAllProjects');
 Route::get('/projects/upload', [ProjectController::class, 'showUploadProjectPage'])->name('uploadProjectPage');
+Route::get('/projects/search', [ProjectController::class, 'index'])->name('searchProject');
 Route::get('/projects/{subject}', [SubjectController::class, 'index'])->name('subjectProjects');
 Route::post('/projects/upload', [ProjectController::class, 'storeProjectUpload'])->name('storeProjectUpload'); 
 Route::get('/project/{id}', [ProjectController::class, 'getProjectDetail'])->name('projectDetail');

@@ -1,7 +1,7 @@
 <x-layout>
     <div class="w-full max-w-[1200px] mx-auto py-10 px-6">
         <!-- Project Title -->
-        <h1 class="text-4xl font-bold text-gray-800 mb-8">{{ $projects->title }}</h1>
+        <h1 class="text-4xl font-bold text-center md:text-start text-gray-800 mb-8">{{ $projects->title }}</h1>
 
         <!-- Image Section -->
         <div class="w-full mb-10">
@@ -12,7 +12,6 @@
         <!-- Project Website Section -->
         <div>
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">{{ $projects->description }}</h2>
-
             {{-- Profile Cards --}}
             <div class="flex flex-wrap gap-8">
                 @foreach ($students as $student)

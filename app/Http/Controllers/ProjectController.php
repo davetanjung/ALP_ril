@@ -16,10 +16,38 @@ class ProjectController extends Controller
 
     public function getAllProjects()
     {
-        $projects = Project::with(['students_projects.groupProjects.student'])->paginate(10);
+        $search = '';
+        $projects = Project::with(['students_projects.groupProjects.student'])
+        ->when($search, function ($query, $search) {
+            $query->whereHas('students_projects.groupProjects.student', function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%");
+            });
+        })
+        ->paginate(10);
+
+        
+        return view('project', [
+            'projects' => $projects,
+            'search' => $search,
+        ]);
+    }
+
+    public function index(Request $request)
+    {
+        // $userId = Auth::id(); 
+        $search = $request->input('search', '');
+
+        $projects = Project::with(['students_projects.groupProjects.student'])
+        ->when($search, function ($query, $search) {
+            $query->whereHas('students_projects.groupProjects.student', function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%");
+            });
+        })
+        ->paginate(10);
 
         return view('project', [
             'projects' => $projects,
+            'search' => $search,
         ]);
     }
 
