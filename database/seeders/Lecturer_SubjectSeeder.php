@@ -5,37 +5,34 @@ namespace Database\Seeders;
 use App\Models\Lecturer;
 use App\Models\Lecturers_Subject;
 use App\Models\Subject;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class Lecturer_SubjectSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        $subject1 = Subject::find(1);  // Assuming subject with ID 1 exists
-        $subject2 = Subject::find(2);  // Assuming subject with ID 2 exists
+        $subjects = Subject::all();
+        $lecturers = Lecturer::all();
 
-        // Get the lecturers
-        $lecturer1 = Lecturer::find(1);  // Lecturer 1
-        $lecturer2 = Lecturer::find(2);  // Lecturer 2
+        $semesterOptions = ['Odd', 'Even'];
 
-        // Create lecturer-subject relationships
-        Lecturers_Subject::create([
-            'year' => '2025',
-            'semester' => 'Spring',  
-            'lecturer_id' => $lecturer1->id,
-            'subject_id' => $subject1->id,
-        ]);
+        foreach ($lecturers as $index => $lecturer) {
+            foreach ($subjects as $subjectIndex => $subject) {
+                $semester = $semesterOptions[$subjectIndex % 2];
 
-        Lecturers_Subject::create([
-            'year' => '2025',
-            'semester' => 'Spring',  
-            'lecturer_id' => $lecturer2->id,
-            'subject_id' => $subject2->id,
-        ]);
+                $exists = Lecturers_Subject::where('lecturer_id', $lecturer->id)
+                    ->where('subject_id', $subject->id)
+                    ->exists();
 
+                if (!$exists) {
+                    Lecturers_Subject::create([
+                        'year' => now()->year,
+                        'semester' => $semester,
+                        'lecturer_id' => $lecturer->id,
+                        'subject_id' => $subject->id,
+                    ]);
+                }
+            }
+        }
     }
 }

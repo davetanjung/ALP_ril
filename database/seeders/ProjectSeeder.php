@@ -77,7 +77,7 @@ class ProjectSeeder extends Seeder
                         // Create the lecturer_subject relationship first
                         $lecturerSubject = Lecturers_Subject::create([
                             'year' => Carbon::now()->year,
-                            'semester' => 'Fall',  // Example semester
+                            'semester' => 'Odd',  // Example semester
                             'lecturer_id' => $lecturer->id,
                             'subject_id' => $subject->id,
                         ]);
