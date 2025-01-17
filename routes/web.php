@@ -74,5 +74,6 @@ Route::post('/profile/update-image', [UserController::class, 'updateProfileImage
 Route::get('/subjects/add', [SubjectController::class, 'showAddSubjectForm'])->name('addSubjectForm');
 Route::post('/subjects/add', [SubjectController::class, 'storeSubject'])->name('storeSubject');
 
+Route::post('/projects/{project}/score', [ProjectController::class, 'giveScore'])->name('giveScore');
 
 
