@@ -1,6 +1,6 @@
 <x-layout>
     <div class="min-h-screen flex flex-col items-center justify-center px-6 pb-32">
-        <h1 class="text-6xl sm:text-8xl font-extrabold text-blue-600 text-center mb-4 px-2 py-4" id="title">ProjectX</h1>
+        <h1 class="text-6xl sm:text-8xl font-extrabold text-blue-600 text-center mb-4 px-2 py-4" id="title">Portolify</h1>
         <!-- Subtitle Section -->
         <p class="text-xl text-gray-700 text-center max-w-3xl leading-7 mt-12">
             Welcome to the <span id="title" class="font-bold text-blue-600">ultimate space</span> where creativity meets
@@ -14,6 +14,11 @@
             <span id="title" class="text-indigo-600 font-bold">talent</span> and <span id="title"
                 class="text-indigo-600 font-bold">dedication</span>.
         </p>
+        <a href="{{ route('project') }}" class="">
+            <button
+                class="text-lg bg-blue-600 text-white px-4 py-2 rounded-lg mt-12 hover:bg-blue-700 transition duration-300 active:scale-90">Get
+                Started -></button>
+        </a>
     </div>
     <div class="min-h-screen flex flex-col">
         <!-- Main Content -->
