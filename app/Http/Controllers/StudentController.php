@@ -19,7 +19,8 @@ class StudentController extends Controller
 
         $search = '';
         $students = Student::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
+            return $query->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%");
         })->paginate(10);
 
         return view('student', [
@@ -35,7 +36,8 @@ class StudentController extends Controller
         $search = $request->input('search', '');
 
         $students = Student::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
+            return $query->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%");
         })->paginate(10);
 
         return view('student', [
