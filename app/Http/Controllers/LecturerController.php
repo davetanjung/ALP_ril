@@ -15,7 +15,8 @@ class LecturerController extends Controller
         // $userId = Auth::id(); 
         $search = '';
         $lecturers = Lecturer::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
+            return $query->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%");
         })->paginate(10);
 
         return view('lecturer', [
@@ -31,7 +32,8 @@ class LecturerController extends Controller
         $search = $request->input('search', '');
 
         $lecturers = Lecturer::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
+            return $query->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%");
         })->paginate(10);
 
         return view('lecturer', [
