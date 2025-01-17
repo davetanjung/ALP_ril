@@ -90,7 +90,6 @@ class ProjectSeeder extends Seeder
                             'lecturer_subject_id' => $lecturerSubject->lecturer_subject_id,  // Link to lecturer_subject
                         ]);
 
-                        // Now assign students to the project
                         $assignedStudents = $students->random(rand(2, 5)); // Randomly assign 2 to 5 students to the project
                         foreach ($assignedStudents as $student) {
                             // Choose an image for the student project from the list
@@ -101,6 +100,7 @@ class ProjectSeeder extends Seeder
                                 'project_id' => $project->project_id,
                                 'image' => $imagePath,  // Assign a random image to the student's project
                                 'status' => 'assigned',  // Example status, modify as per requirements
+                                'link' => $faker->url
                             ]);
 
                             // Optionally, assign the student to a group (if using Groups_Project)
